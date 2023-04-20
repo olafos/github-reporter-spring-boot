@@ -12,6 +12,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static pl.otomczak.empik.githubreporter.adapters.github.Assumptions.assumeRateLimitNotExceeded;
 import static pl.otomczak.empik.githubreporter.adapters.github.RestFacade.TEST_USER;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -28,6 +29,7 @@ class GithubReporterApplicationTests {
 
     @Test
     void userReportShouldWorkAccordingToTaskDescription() {
+        assumeRateLimitNotExceeded(github);
         final Map<String, Object> payload = this.restTemplate.getForObject(
                 getExpectedEndpointPath(TEST_USER),
                 Map.class);
@@ -43,7 +45,7 @@ class GithubReporterApplicationTests {
         );
     }
 
-    private String getExpectedEndpointPath(String login) {
+    String getExpectedEndpointPath(String login) {
         return String.format("http://localhost:%d/users/%s", port, login);
     }
 }

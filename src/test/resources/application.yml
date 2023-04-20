@@ -5,7 +5,7 @@ logging:
 application:
   metrics:
     repository:
-      database: "test-github-report-metrics"
+      database: "test-ghr-metrics"
 spring:
   cache:
     type: none

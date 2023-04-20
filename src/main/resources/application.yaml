@@ -23,7 +23,7 @@ spring:
 application:
   metrics:
     repository:
-      database: "github-report-metrics"
+      database: "ghr-metrics"
       collection: "request_count"
     publisher:
       flush_interval_ms: 1000

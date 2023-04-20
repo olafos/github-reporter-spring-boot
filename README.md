@@ -49,8 +49,8 @@ Application requires:
 
    ```bash
    mongo
-   > use github-report-metrics
-   switched to github-report-metrics
+   > use ghr-metrics
+   switched to ghr-metrics
    > db.request_count.find()
    { "_id" : "olafos", "LOGIN" : "olafos", "REQUEST_COUNT" : NumberLong(11) }
    { "_id" : "octocat", "LOGIN" : "octocat", "REQUEST_COUNT" : NumberLong(9) }

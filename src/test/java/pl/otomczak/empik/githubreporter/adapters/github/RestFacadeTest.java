@@ -10,8 +10,8 @@ import java.time.ZonedDateTime;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static pl.otomczak.empik.githubreporter.adapters.github.Assumptions.assumeRateLimitExceeded;
+import static pl.otomczak.empik.githubreporter.adapters.github.Assumptions.assumeRateLimitNotExceeded;
 import static pl.otomczak.empik.githubreporter.adapters.github.RestFacade.TEST_USER;
 
 @SpringBootTest
@@ -24,7 +24,7 @@ class RestFacadeTest {
 
     @Test
     void getUserShouldLoadUserDataFromGithub() {
-        assumeTrue(hasRemainingRequests());
+        assumeRateLimitNotExceeded(github);
         final User user = github.getUser(TEST_USER);
         assertThat(user.getId()).isEqualTo(583231L);
         assertThat(user.getLogin()).isEqualTo(TEST_USER);
@@ -38,17 +38,13 @@ class RestFacadeTest {
 
     @Test
     void getUserShouldThrowNotFoundIfUserDoesNotExist() {
-        assumeTrue(hasRemainingRequests());
+        assumeRateLimitNotExceeded(github);
         assertThrows(HttpClientErrorException.NotFound.class, () -> github.getUser(NO_SUCH_USER));
     }
 
     @Test
     void getUserShouldThrowForbiddenIfRateLimitIsExceeded() {
-        assumeFalse(hasRemainingRequests());
+        assumeRateLimitExceeded(github);
         assertThrows(HttpClientErrorException.Forbidden.class, () -> github.getUser(TEST_USER));
-    }
-
-    boolean hasRemainingRequests() {
-        return !github.getRateLimits().isExceeded();
     }
 }
