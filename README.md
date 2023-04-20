@@ -21,12 +21,28 @@ Application requires:
 
 1. Build application and run tests:
    
-   ```./gradlew build```
-2. Run application:
+   ```bash
+   ./gradlew build
+   ```
+3. Start application:
    
-   ```./gradlew bootRun```
-3. Experiment with the API:
+   ```bash
+   ./gradlew bootRun
+   ```
+4. Experiment with the API:
 
-   ```curl http://localhost:8080/users/olafos | jq ```
+   ```bash
+   curl http://localhost:8080/users/olafos | jq
+   ```
+5. Check request count
+
+   ```bash
+   mongo
+   > use github-report-metrics
+   switched to github-report-metrics
+   > db.request_count.find()
+   { "_id" : "olafos", "LOGIN" : "olafos", "REQUEST_COUNT" : NumberLong(11) }
+   { "_id" : "octocat", "LOGIN" : "octocat", "REQUEST_COUNT" : NumberLong(9) }
+   ```
 
 Configuration options (like Mongo DB connection) can be tweaked in `src/[main|test]/resources/application.yaml`
