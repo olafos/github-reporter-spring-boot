@@ -33,6 +33,17 @@ Application requires:
 
    ```bash
    curl http://localhost:8080/users/olafos | jq
+
+   {
+     "id": 2526551,
+     "login": "olafos",
+     "name": "Olaf Tomczak",
+     "type": "User",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/2526551?v=4",
+     "createdAt": "2012-10-10T07:59:36Z",
+     "calculations": 84
+   }
+
    ```
 5. Check request count
 
