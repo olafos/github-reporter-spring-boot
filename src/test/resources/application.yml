@@ -1,0 +1,11 @@
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+    pl.otomczak.empik.githubreporter.adapters.metrics: DEBUG
+application:
+  metrics:
+    repository:
+      database: "test-github-report-metrics"
+spring:
+  cache:
+    type: none

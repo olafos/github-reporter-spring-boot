@@ -1,0 +1,29 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  mustache:
+    suffix: .html
+  task:
+    scheduling:
+      pool:
+        size: 2
+  data:
+    mongodb:
+      port: 27017
+  cache:
+    cache-names:
+      - "github-users"
+    type: caffeine
+    caffeine:
+      spec:
+        maximumSize: 1000
+        expireAfterAccess: 1h
+application:
+  metrics:
+    repository:
+      database: "github-report-metrics"
+      collection: "views"
+    publisher:
+      flush_interval_ms: 1000
