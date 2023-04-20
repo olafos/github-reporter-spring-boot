@@ -2,6 +2,7 @@ server:
   error:
     whitelabel:
       enabled: false
+  shutdown: graceful
 spring:
   mustache:
     suffix: .html
@@ -9,6 +10,11 @@ spring:
     scheduling:
       pool:
         size: 2
+      shutdown:
+        await-termination: true
+    execution:
+      shutdown:
+        await-termination: true
   data:
     mongodb:
       port: 27017
