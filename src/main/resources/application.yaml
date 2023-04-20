@@ -24,6 +24,6 @@ application:
   metrics:
     repository:
       database: "github-report-metrics"
-      collection: "views"
+      collection: "request_count"
     publisher:
       flush_interval_ms: 1000

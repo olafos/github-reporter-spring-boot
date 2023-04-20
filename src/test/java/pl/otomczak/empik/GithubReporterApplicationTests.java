@@ -27,7 +27,7 @@ class GithubReporterApplicationTests {
     RestFacade github;
 
     @Test
-    public void userReportShouldWorkAccordingToTaskDescription() {
+    void userReportShouldWorkAccordingToTaskDescription() {
         final Map<String, Object> payload = this.restTemplate.getForObject(
                 getExpectedEndpointPath(TEST_USER),
                 Map.class);

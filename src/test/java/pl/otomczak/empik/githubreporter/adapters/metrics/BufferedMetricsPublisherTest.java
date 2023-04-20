@@ -3,7 +3,7 @@ package pl.otomczak.empik.githubreporter.adapters.metrics;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pl.otomczak.empik.githubreporter.adapters.db.InMemoryMetricsRepository;
+import pl.otomczak.empik.githubreporter.adapters.inmemory.InMemoryMetricsRepository;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,4 +1,4 @@
-package pl.otomczak.empik.githubreporter.adapters.db;
+package pl.otomczak.empik.githubreporter.adapters.inmemory;
 
 import pl.otomczak.empik.githubreporter.core.ports.MetricsRepository;
 
@@ -19,7 +19,7 @@ public class InMemoryMetricsRepository implements MetricsRepository {
 
     public InMemoryMetricsRepository(double failureRatio) {
         if (failureRatio < 0.0 || failureRatio > 1.0) {
-            throw new IllegalArgumentException("failure ratio should be [0, 1]");
+            throw new IllegalArgumentException("failureRatio should be between [0, 1]");
         }
         this.failureRatio = failureRatio;
     }
